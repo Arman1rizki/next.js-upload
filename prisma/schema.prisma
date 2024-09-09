@@ -8,15 +8,14 @@ generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
+dataSource db {
   provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+   url = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
-
 model Upload{
   id String @id @default(cuid())
-  tittle String
+  title String
   image String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

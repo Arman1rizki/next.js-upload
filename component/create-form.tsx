@@ -10,7 +10,7 @@ const CreateForm = () => {
       <div className="mb-4 pt-2">
         <input
           type="text"
-          name="title"
+          name="tittle"
           className="py-2 px-4 rounded-sm border border-gray-400 w-full"
           placeholder="title..."
         />

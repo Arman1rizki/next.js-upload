@@ -1,12 +1,9 @@
 "use server";
-<<<<<<< HEAD:lib/actions.ts
-import { string, z } from "zod";
-import {prisma} from '../lib/prisma'
-import { put } from "@vercel/blob";
-import { revalidatePath } from "next/cache";
-=======
 import { z } from "zod";
->>>>>>> 551ac147c9c01b350abc2b8bf284e00a4344c3c8:lib/actions.tsx
+import {prisma} from '@/lib/prisma'
+import { put } from "@vercel/blob";
+import { revalidatePath } from "next/cache"
+import { redirect } from "next/navigation";
 
 const UploadSchema = z.object({
   title: z.string().min(1),
@@ -38,14 +35,14 @@ export const uploadImage = async (prevState: unknown, formData: FormData) => {
 
   try {
     await prisma.upload.create({
-      data:{
-        title,
-        image: url
-      }
-    })
+      data:{ 
+        title, 
+        image: url, 
+      },
+    });
   } catch(error) {
     return {message: 'Failed to create data'}
   }
-  revalidatePath('/');
-  redirect('/');
+  revalidatePath("/");
+  redirect("/");
 };
